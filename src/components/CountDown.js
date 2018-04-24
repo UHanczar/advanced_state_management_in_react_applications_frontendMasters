@@ -1,30 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-import calculateTimeLeft from '../lib/calculate-time-left';
-
-import './CountDown.css';
-
-export default class CountDown extends Component {
-  state = {
-    timeLeft: calculateTimeLeft(),
+class Filter extends PureComponent {
+  handleChange = event => {
+    const value = event.target.value;
+    this.props.updateFilter(value);
   };
 
-  componentDidMount() {
-    this.countDownInterval = setInterval(() => {
-      this.setState({ timeLeft: calculateTimeLeft() });
-    }, 500);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.countDownInterval);
-  }
-
   render() {
-    const { timeLeft } = this.state;
+    const { value } = this.props;
     return (
-      <div className="CountDown">
-        The Lyft will be here in about {timeLeft}.
-      </div>
+      <input
+        className="Items-searchTerm"
+        value={value}
+        onChange={this.handleChange}
+      />
     );
   }
 }
+
+export default Filter;

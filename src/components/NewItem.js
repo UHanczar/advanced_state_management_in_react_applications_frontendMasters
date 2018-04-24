@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
 
 import './NewItem.css';
-import { addItem } from '../actions';
 
 class NewItem extends Component {
-  state = { value: '' };
+  handleChange = (event) => {
+    const value = event.target.value;
+    this.props.updateNewItemValue(value);
+  }
 
-  handleChange = event => {
-    const { value } = event.target;
-    
-    this.setState({ value });
-  };
-
-  handleSubmit = event => {
-    const { value } = this.state;
+  handleSubmit = (event) => {
     event.preventDefault();
-
-    addItem(value);
-
-    this.setState({ value: '' });
-  };
+    const { value } = this.props;
+    this.props.addNewItem(value);
+  }
 
   render() {
-    const { value } = this.state;
+    const { value } = this.props;
 
     return (
       <form className="NewItem" onSubmit={this.handleSubmit}>
