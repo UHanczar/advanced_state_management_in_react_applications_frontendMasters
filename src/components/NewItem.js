@@ -11,7 +11,9 @@ class NewItem extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { value } = this.props;
+
     this.props.addNewItem(value);
+    this.props.clearNewItemValue();
   }
 
   render() {
