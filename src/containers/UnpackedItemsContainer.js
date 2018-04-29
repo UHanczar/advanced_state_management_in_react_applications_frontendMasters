@@ -8,15 +8,15 @@ import {
 } from '../actions/itemsActions'
 
 const mapStateToProps = ({ items, filter }) => {
-  return { items: items.present.filter(item => !item.packed && item.value.includes(filter.unpackedItemsFilter)) };
+  return { items: items.filter(item => !item.packed && item.value.includes(filter.unpackedItemsFilter)) };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onCheckOff(id) {
-    dispatch(toggleItem(id))
+  onCheckOff(item) {
+    dispatch(toggleItem(item))
   },
-  onRemove(id) {
-    dispatch(removeItem(id))
+  onRemove(item) {
+    dispatch(removeItem(item))
   }
 });
 
