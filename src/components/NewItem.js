@@ -12,7 +12,7 @@ class NewItem extends Component {
     event.preventDefault();
     const { value } = this.props;
 
-    this.props.addNewItem(value);
+    this.props.setNewItem(value);
     this.props.clearNewItemValue();
   }
 

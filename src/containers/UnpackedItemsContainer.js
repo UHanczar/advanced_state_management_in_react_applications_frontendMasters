@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import Items from '../components/Items';
 
 import {
-  toggleItem,
-  removeItem,
+  toggleItemREquest,
+  removeItemRequest,
 } from '../actions/itemsActions'
 
 const mapStateToProps = ({ items, filter }) => {
@@ -13,10 +13,10 @@ const mapStateToProps = ({ items, filter }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onCheckOff(item) {
-    dispatch(toggleItem(item))
+    dispatch(toggleItemREquest(item))
   },
   onRemove(item) {
-    dispatch(removeItem(item))
+    dispatch(removeItemRequest(item))
   }
 });
 

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import NewItem from '../components/NewItem';
 
 import { updateNewItemValue, clearNewItemValue } from '../actions/newItemActions.js';
-import { addNewItem } from '../actions/itemsActions';
+import { setNewItem } from '../actions/itemsActions';
 
 const mapStateToProps = ({ newItemValue }) => ({ value: newItemValue });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateNewItemValue,
-    addNewItem,
+    setNewItem,
     clearNewItemValue
   }, dispatch)
 };

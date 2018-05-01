@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Items from '../components/Items';
 
-import { toggleItem, removeItem } from '../actions/itemsActions';
+import { toggleItemREquest, removeItemRequest } from '../actions/itemsActions';
 
 const mapStateToProps = ({ items, filter }) => {
   return { items: items.filter(item => item.packed && item.value.includes(filter.packedItemsFilter)) };
@@ -9,10 +9,10 @@ const mapStateToProps = ({ items, filter }) => {
 
 const mapDispatchToProps = dispatch => ({
   onCheckOff(item) {
-    dispatch(toggleItem(item));
+    dispatch(toggleItemREquest(item));
   },
   onRemove(item) {
-    dispatch(removeItem(item));
+    dispatch(removeItemRequest(item));
   },
 });
 
