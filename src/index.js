@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider } from 'mobx-react';
 
-import store from './store';
-
+import ItemList from './models/itemList';
 import Application from './components/Application';
 
 import './index.css';
 
+const itemList = new ItemList();
+
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider itemList={itemList}>
     <Application />
   </Provider>,
   document.getElementById('root'),

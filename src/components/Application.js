@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import NewItemContainer from '../containers/NewItemContainer';
-import PackedItemsContainer from '../containers/PackedItemsContainer';
-import UnpackedItemsContainer from '../containers/UnpackedItemsContainer';
-import MarkAllAsUnpackedContainer from '../containers/MarkAllAsUnpackedContainer';
-import UnpackedFilterContainer from '../containers/UnpackedFilterContainer';
-import PackedFilterContainer from '../containers/PackedFilterContainer';
+import { inject, observer } from 'mobx-react';
+
+import NewItem from './NewItem';
+import PackedItems from './PackedItems';
+import UnpackedItems from './UnpackedItems';
+import MarkAllAsUnpacked from './MarkAllAsUnpacked';
 
 import './Application.css';
 
@@ -12,10 +12,10 @@ class Application extends Component {
   render() {
     return (
       <div className="Application">
-        <NewItemContainer />
-        <UnpackedItemsContainer title="Unpacked Items" render={() => <UnpackedFilterContainer />} />
-        <PackedItemsContainer title="Packed Items" render={() => <PackedFilterContainer />} />
-        <MarkAllAsUnpackedContainer />
+        <NewItem onSubmit={() => {}} />
+        <UnpackedItems />
+        <PackedItems />
+        <MarkAllAsUnpacked />
       </div>
     );
   }

@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
+import { inject } from 'mobx-react';
+import uniqueId from 'lodash/uniqueId';
 
 import './NewItem.css';
 
+@inject('itemList')
 class NewItem extends Component {
+  state = {
+    value: ''
+  }
   handleChange = (event) => {
     const value = event.target.value;
-    this.props.updateNewItemValue(value);
+    this.setState({ value });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { value } = this.props;
+    const { value } = this.state;
+    const { itemList } = this.props;
 
-    this.props.setNewItem(value);
-    this.props.clearNewItemValue();
+    itemList.addItem({ value });
+    this.setState({ value: '' });
   }
 
   render() {
-    const { value } = this.props;
+    const { value } = this.state;
 
     return (
       <form className="NewItem" onSubmit={this.handleSubmit}>

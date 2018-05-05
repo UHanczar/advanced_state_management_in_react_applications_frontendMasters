@@ -5,19 +5,19 @@ import './Item.css';
 
 class Item extends Component {
   render() {
-    const { packed, id, value, onCheckOff, onRemove } = this.props;
+    const { item, onCheckOff, onRemove } = this.props;
     return (
       <article className="Item">
-        <label htmlFor={id}>
+        <label htmlFor={item.id}>
           <input
             type="checkbox"
-            checked={packed}
-            onChange={onCheckOff}
-            id={id}
+            checked={item.packed}
+            onChange={item.toggle}
+            id={item.id}
           />
-          {value}
+          {item.value}
         </label>
-        <button className="Item-remove" onClick={onRemove}>
+        <button className="Item-remove" onClick={item.remove}>
           Remove
         </button>
       </article>
@@ -27,10 +27,6 @@ class Item extends Component {
 
 Item.propTypes = {
   packed: PropTypes.bool,
-  id: PropTypes.number.isRequired,
-  value: PropTypes.string.isRequired,
-  onCheckOff: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
 };
 
 Item.defaultProps = {

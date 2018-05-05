@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 
-import Item from './Item';
 import './Items.css';
+import Item from './Item';
 
 class Items extends Component {
+  state = {
+    searchTerm: '',
+  };
+
+  updateSearchTerm = searchTerm => {
+    this.setState({ searchTerm });
+  };
+
   render() {
     const { title, items, onCheckOff, onRemove } = this.props;
+    const { searchTerm } = this.state;
+
     return (
       <section className="Items">
         <h2>
           {title} ({items.length})
         </h2>
-        { this.props.render && this.props.render() }
+        { this.props.children }
         {items.map(item => (
             <Item
               key={item.id}
-              onCheckOff={() => onCheckOff(item)}
-              onRemove={() => onRemove(item)}
-              {...item}
+              item={item}
             />
           ))}
       </section>
